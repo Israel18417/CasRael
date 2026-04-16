@@ -1,0 +1,33 @@
+{
+  "name": "my-portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "server": "node server.mjs",
+    "dev:all": "concurrently \"npm run server\" \"npm run dev -- --host\"",
+    "build": "tsc && vite build",
+    "start": "node server.mjs",
+    "prod": "npm run build && npm run start",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "lowdb": "^7.0.1",
+    "nodemailer": "^8.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.1.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.7"
+  }
+}
