@@ -5,7 +5,7 @@ This project is a React + Vite portfolio for CasRael with a contact form and loc
 ## What the contact form does
 
 - The frontend submits messages to `/api/contact`.
-- The backend saves the contact locally and sends an email to `mycasrael@gmail.com`.
+- The backend saves the contact locally and sends an email to `mycasreal@gmail.com`.
 - If SMTP is not configured, the form falls back to opening the user's mail app.
 
 ## Setup
@@ -30,8 +30,8 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER=your-gmail-address@gmail.com
 SMTP_PASS=your-gmail-app-password
-EMAIL_FROM="CasRael <mycasrael@gmail.com>"
-EMAIL_TO=mycasrael@gmail.com
+EMAIL_FROM="CasRael <mycasreal@gmail.com>"
+EMAIL_TO=mycasreal@gmail.com
 RATE_LIMIT_WINDOW_MINUTES=15
 RATE_LIMIT_MAX_REQUESTS=8
 ```
@@ -86,33 +86,26 @@ set NODE_ENV=production&& set HOST=0.0.0.0&& set PORT=4000&& npm run start
 NODE_ENV=production HOST=0.0.0.0 PORT=4000 npm run start
 ```
 
-## Render deployment
+## Vercel deployment
 
-Render is a good choice for this project because it supports Node web services and environment variables.
+This project now includes a serverless contact API endpoint at `/api/contact`.
 
-1. Create a free Render account.
-2. Create a new Web Service.
-3. Connect your GitHub repository.
-4. Use `render.yaml` in the repo to configure the service.
-5. Make sure the service name is `CasRael` so the free URL becomes:
-
-- `https://CasRael.onrender.com`
-
-6. Set the build command to:
+1. Create a free Vercel account and connect your GitHub repository.
+2. Select the `main` branch from `Israel18417/CasRael`.
+3. Set the build command to:
 
 ```bash
 npm install && npm run build
 ```
 
-7. Set the start command to:
+4. Set the output directory to:
 
 ```bash
-npm run start
+dist
 ```
 
-8. Add these environment variables in Render:
+5. Add these environment variables in Vercel:
 
-- `PORT` (Render provides this automatically)
 - `NODE_ENV=production`
 - `SMTP_HOST`
 - `SMTP_PORT`
@@ -122,9 +115,13 @@ npm run start
 - `EMAIL_FROM`
 - `EMAIL_TO`
 
-9. Deploy and copy the generated Render URL.
+6. Deploy the site.
 
-## Notes
+### Notes
 
-- `EMAIL_TO` is already set to `mycasrael@gmail.com`.
+- Vercel will serve static assets from `dist` and handle `/api/contact` via the Vercel function in `api/contact.js`.
+- `PORT` is provided automatically by Vercel.
+- If you still want to deploy on Render, the existing `render.yaml` is available in the repo.
+
+- `EMAIL_TO` is already set to `mycasreal@gmail.com`.
 - If the backend SMTP settings are missing or fail, the form will open the default mail app as a fallback.

@@ -116,7 +116,7 @@ export default function Slider3D() {
         ),
       },
     ],
-    contactEmail: "mycasrael@gmail.com",
+    contactEmail: "mycasreal@gmail.com",
     phone: "+234 904 698 8683",
     website: "casrael.dev",
     skills: ["React", "TypeScript", "3D UI", "Motion Design", "Responsive Layout"],
@@ -330,16 +330,26 @@ export default function Slider3D() {
         </button>
       </div>
 
-      {/* Dots Navigation */}
-      <div className="dots-nav">
-        {projects.map((_, index) => (
-          <button
-            key={index}
-            className={`dot ${index === currentIndex ? "active" : ""}`}
-            onClick={() => handleDotClick(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+      <div className="slider-controls">
+        <div className="dots-nav">
+          {projects.map((_, index) => (
+            <button
+              key={index}
+              className={`dot ${index === currentIndex ? "active" : ""}`}
+              onClick={() => handleDotClick(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        <button
+          className={`autoplay-toggle ${isAutoPlay ? "active" : ""}`}
+          onClick={() => setIsAutoPlay(!isAutoPlay)}
+          title={isAutoPlay ? "Pause autoplay" : "Resume autoplay"}
+          type="button"
+        >
+          {isAutoPlay ? "Pause" : "Play"}
+        </button>
       </div>
 
       <section className="brand-story-panel">
@@ -473,13 +483,12 @@ export default function Slider3D() {
         </div>
       </section>
 
-      {/* Autoplay toggle */}
       <button
-        className={`autoplay-toggle ${isAutoPlay ? "active" : ""}`}
-        onClick={() => setIsAutoPlay(!isAutoPlay)}
-        title={isAutoPlay ? "Pause autoplay" : "Resume autoplay"}
+        className="back-to-top"
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
-        {isAutoPlay ? "⏸" : "▶"}
+        Back to Top
       </button>
     </div>
   );

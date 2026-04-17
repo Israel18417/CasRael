@@ -46,8 +46,8 @@ const smtpHost = process.env.SMTP_HOST;
 const smtpPort = Number(process.env.SMTP_PORT || 587);
 const smtpUser = process.env.SMTP_USER;
 const smtpPass = process.env.SMTP_PASS;
-const emailFrom = process.env.EMAIL_FROM || "CasRael <mycasrael@gmail.com>";
-const emailTo = process.env.EMAIL_TO || "mycasrael@gmail.com";
+const emailFrom = process.env.EMAIL_FROM || "CasRael <mycasreal@gmail.com>";
+const emailTo = process.env.EMAIL_TO || "mycasreal@gmail.com";
 const smtpSecure = process.env.SMTP_SECURE === "true";
 const smtpAutoFallback = process.env.SMTP_AUTO_FALLBACK !== "false";
 
