@@ -1,4 +1,5 @@
 import { useState, useEffect, type FormEvent } from "react";
+import { motion } from "framer-motion";
 import "../css/Slider3D.css";
 import { projects } from "../js/data";
 import Logo from "../components/Logo";
@@ -219,7 +220,12 @@ export default function Slider3D() {
         </nav>
       </header>
 
-      <section className="hero-panel">
+      <motion.section 
+        className="hero-panel"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="hero-copy">
           <span className="eyebrow">Brand & Contact</span>
           <h1>{profile.name}</h1>
@@ -265,9 +271,15 @@ export default function Slider3D() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <div className="slider-wrapper" id="projects">
+      <motion.div 
+        className="slider-wrapper" id="projects"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+      >
         <div className="slider-viewport">
           {projects.map((project: Project, index: number) => (
             <div
@@ -328,7 +340,7 @@ export default function Slider3D() {
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
         </button>
-      </div>
+      </motion.div>
 
       <div className="slider-controls">
         <div className="dots-nav">
@@ -352,7 +364,13 @@ export default function Slider3D() {
         </button>
       </div>
 
-      <section className="brand-story-panel">
+      <motion.section 
+        className="brand-story-panel"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="brand-story-copy">
           <span className="eyebrow">Brand Story</span>
           <h2>CasRael is more than a portfolio.</h2>
@@ -379,9 +397,15 @@ export default function Slider3D() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="service-panel">
+      <motion.section 
+        className="service-panel"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="service-copy">
           <span className="eyebrow">CasRael Services</span>
           <h2>How CasRael brings your vision to life</h2>
@@ -395,9 +419,15 @@ export default function Slider3D() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="contact-panel" id="contact">
+      <motion.section 
+        className="contact-panel" id="contact"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="contact-copy">
           <span className="eyebrow">Get in Touch</span>
           <h2>Let’s build something great together.</h2>
@@ -481,7 +511,7 @@ export default function Slider3D() {
             </a>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <button
         className="back-to-top"

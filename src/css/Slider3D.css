@@ -1,17 +1,26 @@
 /* 3D Slider Styles */
 
+:root {
+  --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: 'Playfair Display', serif;
+}
+
 .slider-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+  background: #05050a;
   padding: 40px 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-    Cantarell, sans-serif;
+  font-family: var(--font-body);
   position: relative;
   overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
 }
 
 .site-header {
@@ -566,8 +575,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 20% 50%, rgba(255, 100, 100, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(100, 150, 255, 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 15% 30%, rgba(111, 208, 255, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 85% 70%, rgba(100, 150, 255, 0.08) 0%, transparent 40%);
   pointer-events: none;
 }
 
