@@ -44,6 +44,11 @@ const initTransporter = async () => {
   }
 
   if (!smtpHost || !smtpUser || !smtpPass) {
+    console.error("Missing SMTP environment variables:", {
+      host: !!smtpHost,
+      user: !!smtpUser,
+      pass: !!smtpPass,
+    });
     return null;
   }
 
@@ -55,12 +60,21 @@ const initTransporter = async () => {
     return cachedTransporter;
   }
 
-  if (smtpAutoFallback && smtpHost.includes("gmail.com") && smtpPort === 587 && !smtpSecure) {
-    const fallbackTransporter = createTransporter(smtpHost, 465, true);
-    const fallbackOk = await verifyTransporter(fallbackTransporter);
-    if (fallbackOk) {
-      cachedTransporter = fallbackTransporter;
-      return cachedTransporter;
+  if (smtpAutoFallback && smtpHost.includes("gmail.com")) {
+    const fallbackOptions = [];
+    if (smtpPort === 587 && !smtpSecure) {
+      fallbackOptions.push({ port: 465, secure: true });
+    } else if (smtpPort === 465 && smtpSecure) {
+      fallbackOptions.push({ port: 587, secure: false });
+    }
+
+    for (const option of fallbackOptions) {
+      const fallbackTransporter = createTransporter(smtpHost, option.port, option.secure);
+      const fallbackOk = await verifyTransporter(fallbackTransporter);
+      if (fallbackOk) {
+        cachedTransporter = fallbackTransporter;
+        return cachedTransporter;
+      }
     }
   }
 
@@ -124,13 +138,15 @@ export default async function handler(req, res) {
 
   const transporter = await initTransporter();
   if (!transporter) {
+    console.error("Transporter initialization failed - check your environment variables.");
     return res.status(500).json({
       error:
-        "Email service is not configured. Please set SMTP_HOST, SMTP_PORT, SMTP_USER, and SMTP_PASS.",
+        "Email service is not configured correctly on the server. Please verify SMTP_HOST, SMTP_USER, and SMTP_PASS environment variables.",
     });
   }
 
   try {
+    console.log(`Attempting to send email to ${emailTo} via ${transporter.options.host}...`);
     await transporter.sendMail({
       from: emailFrom,
       to: emailTo,
@@ -139,12 +155,14 @@ export default async function handler(req, res) {
       html: `<p><strong>Name:</strong> ${validation.data.name}</p><p><strong>Email:</strong> ${validation.data.email}</p><p><strong>Phone:</strong> ${validation.data.phone || "N/A"}</p><p><strong>Message:</strong></p><p>${validation.data.message.replace(/\n/g, "<br />")}</p>`,
     });
 
+    console.log("Email sent successfully.");
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error("sendMail error:", error);
+    console.error("Detailed sendMail error:", error);
     return res.status(500).json({
       error: "Failed to send email notification.",
       details: error.message || String(error),
+      code: error.code || "UNKNOWN",
     });
   }
 }

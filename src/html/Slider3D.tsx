@@ -183,7 +183,27 @@ export default function Slider3D() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send message");
+        const text = await response.text();
+        let serverMessage = "Failed to send message.";
+
+        try {
+          const body = JSON.parse(text);
+          if (body?.error) {
+            serverMessage = body.error;
+          }
+        } catch {
+          serverMessage = text || serverMessage;
+        }
+
+        if (response.status >= 500) {
+          const mailto = buildMailtoLink();
+          window.location.href = mailto;
+          setContactStatus("Server send failed, opening your email app to complete the message.");
+          return;
+        }
+
+        setContactStatus(serverMessage);
+        return;
       }
 
       setContactStatus("Message sent! I’ll follow up shortly.");

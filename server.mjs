@@ -79,12 +79,22 @@ if (smtpHost && smtpUser && smtpPass) {
 
   if (primaryOk) {
     transporter = primaryTransporter;
-  } else if (smtpAutoFallback && smtpHost.includes("gmail.com") && smtpPort === 587 && !smtpSecure) {
-    console.log("Attempting Gmail fallback to SMTPS on port 465...");
-    const fallbackTransporter = createTransporter(smtpHost, 465, true);
-    const fallbackOk = await verifyTransporter(fallbackTransporter);
-    if (fallbackOk) {
-      transporter = fallbackTransporter;
+  } else if (smtpAutoFallback && smtpHost.includes("gmail.com")) {
+    const fallbackOptions = [];
+    if (smtpPort === 587 && !smtpSecure) {
+      fallbackOptions.push({ port: 465, secure: true });
+    } else if (smtpPort === 465 && smtpSecure) {
+      fallbackOptions.push({ port: 587, secure: false });
+    }
+
+    for (const option of fallbackOptions) {
+      console.log(`Attempting Gmail fallback to ${option.secure ? "SMTPS" : "STARTTLS"} on port ${option.port}...`);
+      const fallbackTransporter = createTransporter(smtpHost, option.port, option.secure);
+      const fallbackOk = await verifyTransporter(fallbackTransporter);
+      if (fallbackOk) {
+        transporter = fallbackTransporter;
+        break;
+      }
     }
   }
 
@@ -92,12 +102,13 @@ if (smtpHost && smtpUser && smtpPass) {
     console.log(`SMTP transporter ready: ${transporter.options.host}:${transporter.options.port} (secure=${transporter.options.secure})`);
   } else {
     console.warn(
-      "SMTP is configured but verification failed. Contact emails will not be sent until SMTP settings or network access are fixed."
+      "SMTP is configured but verification failed. Check credentials and network. Host:", smtpHost, "Port:", smtpPort
     );
   }
 } else {
   console.warn(
-    "SMTP is not configured. Contact emails will not be sent through the server until SMTP_HOST, SMTP_USER, and SMTP_PASS are set in .env."
+    "SMTP is not configured. Missing variables:",
+    { host: !!smtpHost, user: !!smtpUser, pass: !!smtpPass }
   );
 }
 
@@ -185,13 +196,15 @@ app.post("/api/contact", rateLimiter, validateContactPayload, async (req, res) =
   await db.write();
 
   if (!transporter) {
+    console.error("Attempted to send email but transporter is not ready.");
     return res.status(500).json({
       error:
-        "Email service is not configured. Please set SMTP_HOST, SMTP_PORT, SMTP_USER, and SMTP_PASS.",
+        "Email service is not configured correctly. Please check your .env file.",
     });
   }
 
   try {
+    console.log(`Sending email from ${emailFrom} to ${emailTo}...`);
     await transporter.sendMail({
       from: emailFrom,
       to: emailTo,
@@ -200,13 +213,19 @@ app.post("/api/contact", rateLimiter, validateContactPayload, async (req, res) =
       html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone || "N/A"}</p><p><strong>Message:</strong></p><p>${message.replace(/\n/g, "<br />")}</p>`,
     });
 
+    console.log("Email sent successfully.");
     res.json({ success: true, contact: newContact });
   } catch (sendError) {
-    console.error("sendMail error:", sendError);
-    console.error("sendMail response:", sendError.response || sendError.responseCode || sendError.rejected);
+    console.error("sendMail error details:", {
+      message: sendError.message,
+      code: sendError.code,
+      command: sendError.command,
+      response: sendError.response,
+    });
     res.status(500).json({
       error: "Failed to send email notification.",
       details: sendError.message || String(sendError),
+      code: sendError.code || "UNKNOWN",
     });
   }
 });
