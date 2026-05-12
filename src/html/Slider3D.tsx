@@ -117,9 +117,9 @@ export default function Slider3D() {
         ),
       },
     ],
-    contactEmail: "mycasreal@gmail.com",
+    contactEmail: "mycasrael@gmail.com",
     phone: "+234 904 698 8683",
-    website: "casrael.dev",
+    website: "casrael.vercel.app",
     skills: ["React", "TypeScript", "3D UI", "Motion Design", "Responsive Layout"],
   };
 
@@ -404,15 +404,22 @@ export default function Slider3D() {
           <div className="expertise-section">
             <h3>Core Expertise</h3>
             <div className="expertise-grid">
-              {profile.coreExpertise.map((area) => (
-                <article key={area.title} className="expertise-card">
+              {profile.coreExpertise.map((area, idx) => (
+                <motion.article 
+                  key={area.title} 
+                  className="expertise-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                >
                   <h4>{area.title}</h4>
                   <ul>
                     {area.items.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-                </article>
+                </motion.article>
               ))}
             </div>
           </div>
@@ -430,12 +437,19 @@ export default function Slider3D() {
           <span className="eyebrow">CasRael Services</span>
           <h2>How CasRael brings your vision to life</h2>
           <div className="service-grid">
-            {profile.serviceExamples.map((service) => (
-              <article key={service.title} className="service-card">
+            {profile.serviceExamples.map((service, idx) => (
+              <motion.article 
+                key={service.title} 
+                className="service-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
                 {service.icon}
                 <h4>{service.title}</h4>
                 <p>{service.description}</p>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>

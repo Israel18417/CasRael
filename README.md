@@ -5,7 +5,7 @@ This project is a React + Vite portfolio for CasRael with a contact form and loc
 ## What the contact form does
 
 - The frontend submits messages to `/api/contact`.
-- The backend saves the contact locally and sends an email to `mycasreal@gmail.com`.
+- The backend saves the contact locally and sends an email to `mycasrael@gmail.com`.
 - If SMTP is not configured, the form falls back to opening the user's mail app.
 
 ## Setup
@@ -30,8 +30,8 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER=your-gmail-address@gmail.com
 SMTP_PASS=your-gmail-app-password
-EMAIL_FROM="CasRael <mycasreal@gmail.com>"
-EMAIL_TO=mycasreal@gmail.com
+EMAIL_FROM="CasRael <mycasrael@gmail.com>"
+EMAIL_TO=mycasrael@gmail.com
 RATE_LIMIT_WINDOW_MINUTES=15
 RATE_LIMIT_MAX_REQUESTS=8
 ```
@@ -121,7 +121,5 @@ dist
 
 - Vercel will serve static assets from `dist` and handle `/api/contact` via the Vercel function in `api/contact.js`.
 - `PORT` is provided automatically by Vercel.
-- If you still want to deploy on Render, the existing `render.yaml` is available in the repo.
-
-- `EMAIL_TO` is already set to `mycasreal@gmail.com`.
+- `EMAIL_TO` is already set to `mycasrael@gmail.com`.
 - If the backend SMTP settings are missing or fail, the form will open the default mail app as a fallback.

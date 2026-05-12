@@ -11,43 +11,51 @@ export default function Logo() {
           aria-hidden="true"
         >
           <defs>
-            <linearGradient id="casraelGradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#6fd0ff" />
-              <stop offset="100%" stopColor="#1d9dff" />
+            <linearGradient id="logoGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#80dfff" />
+              <stop offset="50%" stopColor="#3b82f6" />
+              <stop offset="100%" stopColor="#1d4ed8" />
             </linearGradient>
+            <filter id="logoGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="2" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
           </defs>
-          <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#casraelGradient)" />
+          
+          {/* Background Shape */}
+          <rect 
+            x="8" y="8" width="48" height="48" rx="14" 
+            fill="rgba(255, 255, 255, 0.03)" 
+            stroke="url(#logoGradient)" 
+            strokeWidth="1"
+          />
+          
+          {/* Abstract C/R Symbol */}
           <path
-            d="M20 20H32L40 26V30L32 36H24"
-            stroke="white"
-            strokeWidth="4"
-            strokeLinecap="square"
-            strokeLinejoin="miter"
+            d="M22 24C22 24 24 20 32 20C40 20 42 24 42 24"
+            stroke="url(#logoGradient)"
+            strokeWidth="3.5"
+            strokeLinecap="round"
           />
           <path
-            d="M30 20V44"
+            d="M24 32H36C40 32 42 34 42 38C42 42 40 44 36 44H24V20"
             stroke="white"
-            strokeWidth="4"
-            strokeLinecap="square"
+            strokeWidth="3.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            filter="url(#logoGlow)"
           />
           <path
-            d="M30 20H40V28H30"
+            d="M34 32L42 44"
             stroke="white"
-            strokeWidth="4"
-            strokeLinecap="square"
-            strokeLinejoin="miter"
-          />
-          <path
-            d="M30 32L42 48"
-            stroke="white"
-            strokeWidth="4"
-            strokeLinecap="square"
+            strokeWidth="3.5"
+            strokeLinecap="round"
           />
         </svg>
       </div>
       <div className="logo-text">
-        <span className="logo-main">CasRael</span>
-        <span className="logo-sub">Creative Tech</span>
+        <span className="logo-main">CASRAEL</span>
+        <span className="logo-sub">CREATIVE TECH</span>
       </div>
     </div>
   );
