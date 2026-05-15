@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import "../css/Slider3D.css";
 import { projects, profile } from "../js/data";
 import Logo from "./Logo";
-import CustomCursor from "./CustomCursor";
 import DeepSpaceBackground from "./DeepSpaceBackground";
 import ScrollProgress from "./ScrollProgress";
 import ProjectModal from "./ProjectModal";
@@ -95,9 +94,9 @@ export default function Slider3D() {
 
   return (
     <div className="slider-container">
-      <CustomCursor />
       <DeepSpaceBackground />
       <ScrollProgress />
+
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
 
       <header className={`site-header ${isScrolled ? "scrolled" : ""}`}>
@@ -196,9 +195,13 @@ export default function Slider3D() {
         className="back-to-top"
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
       >
-        Back to Top
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
       </button>
+
     </div>
   );
 }
