@@ -1,125 +1,57 @@
-# My Portfolio
+# CasRael | Israel Ogunnaike Portfolio
 
-This project is a React + Vite portfolio for CasRael with a contact form and local backend.
+A premium, high-performance portfolio for **CasRael**, the creative brand of **Israel Ogunnaike**, showcasing expertise in Technology, Brand Management, and Media Innovation.
 
-## What the contact form does
+## 🚀 Key Features
 
-- The frontend submits messages to `/api/contact`.
-- The backend saves the contact locally and sends an email to `mycasrael@gmail.com`.
-- If SMTP is not configured, the form falls back to opening the user's mail app.
+- **3D Slider**: Interactive 3D flip-card carousel for project highlights.
+- **Deep Space Background**: Interactive canvas-based starfield with reactive nebula glows.
+- **Modular Architecture**: Built with React and TypeScript using a clean, component-based structure.
+- **Motion Design**: Fluid animations and staggered reveals powered by Framer Motion.
+- **Premium Glassmorphism**: High-end aesthetic with refined blurs, glows, and HSL color palettes.
+- **Mobile Optimized**: Fully responsive experience tailored for all devices.
+- **Contact Success**: Integrated contact form with premium confetti feedback.
 
-## Setup
+## 🛠️ Tech Stack
 
-1. Install dependencies:
+- **Frontend**: React, TypeScript, Vite
+- **Animation**: Framer Motion, Canvas API, Canvas Confetti
+- **Styling**: Vanilla CSS (Premium Design System)
+- **Deployment**: Vercel
 
-```bash
-npm install
-```
+## 📁 Project Structure
 
-2. Copy the example env file:
+- `src/components/`: Modular UI blocks (Hero, Expertise, Services, Slider3D, etc.).
+- `src/js/data.ts`: Central source for site content and project data.
+- `src/css/Slider3D.css`: Global design system and premium styles.
+- `api/`: Vercel serverless functions for the contact form.
 
-```bash
-cp .env.example .env
-```
+## 🚀 Getting Started
 
-3. Open `.env` and set your SMTP credentials:
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-```ini
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_SECURE=false
-SMTP_USER=your-gmail-address@gmail.com
-SMTP_PASS=your-gmail-app-password
-EMAIL_FROM="CasRael <mycasrael@gmail.com>"
-EMAIL_TO=mycasrael@gmail.com
-RATE_LIMIT_WINDOW_MINUTES=15
-RATE_LIMIT_MAX_REQUESTS=8
-```
+2. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
 
-> If you use Gmail, create an app password and use it for `SMTP_PASS`.
+3. **Run Backend Server (Optional for local contact form testing)**:
+   ```bash
+   npm run server
+   ```
 
-4. Start the backend server:
+## 🌐 Deployment
 
-```bash
-npm run server
-```
+This project is optimized for **Vercel**. To deploy:
 
-5. Start the frontend app:
+1. Push your code to a GitHub repository.
+2. Connect the repository to Vercel.
+3. Configure Environment Variables (if using the contact form backend).
+4. Deploy!
 
-```bash
-npm run dev
-```
+---
 
-6. Open the frontend in the browser:
-
-- `http://localhost:5174/`
-
-## Production
-
-1. Build the frontend assets:
-
-```bash
-npm run build
-```
-
-2. Start the production server:
-
-```bash
-npm run start
-```
-
-3. Open the app in the browser:
-
-- `http://localhost:4000/`
-
-4. If you need to set a different host or port:
-
-- Windows:
-
-```bash
-set NODE_ENV=production&& set HOST=0.0.0.0&& set PORT=4000&& npm run start
-```
-
-- macOS/Linux:
-
-```bash
-NODE_ENV=production HOST=0.0.0.0 PORT=4000 npm run start
-```
-
-## Vercel deployment
-
-This project now includes a serverless contact API endpoint at `/api/contact`.
-
-1. Create a free Vercel account and connect your GitHub repository.
-2. Select the `main` branch from `Israel18417/CasRael`.
-3. Set the build command to:
-
-```bash
-npm install && npm run build
-```
-
-4. Set the output directory to:
-
-```bash
-dist
-```
-
-5. Add these environment variables in Vercel:
-
-- `NODE_ENV=production`
-- `SMTP_HOST`
-- `SMTP_PORT`
-- `SMTP_SECURE`
-- `SMTP_USER`
-- `SMTP_PASS`
-- `EMAIL_FROM`
-- `EMAIL_TO`
-
-6. Deploy the site.
-
-### Notes
-
-- Vercel will serve static assets from `dist` and handle `/api/contact` via the Vercel function in `api/contact.js`.
-- `PORT` is provided automatically by Vercel.
-- `EMAIL_TO` is already set to `mycasrael@gmail.com`.
-- If the backend SMTP settings are missing or fail, the form will open the default mail app as a fallback.
+Built with precision by Israel Ogunnaike.

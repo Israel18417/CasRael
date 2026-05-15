@@ -12,10 +12,10 @@ export default function Logo() {
         >
           <defs>
             <linearGradient id="logoGradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#80dfff" />
-              <stop offset="50%" stopColor="#3b82f6" />
-              <stop offset="100%" stopColor="#1d4ed8" />
+              <stop offset="0%" stopColor="#6fd0ff" />
+              <stop offset="100%" stopColor="#1d9dff" />
             </linearGradient>
+
             <filter id="logoGlow" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur stdDeviation="2" result="blur" />
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
