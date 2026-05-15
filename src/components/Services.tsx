@@ -82,7 +82,8 @@ export default function Services({ profile }: ServicesProps) {
               key={service.title}
               className="service-card"
               variants={itemVariants}
-              whileHover={{ y: -5, borderOverlay: "1px solid rgba(255, 255, 255, 0.3)" }}
+              whileHover={{ y: -5, borderColor: "rgba(255, 255, 255, 0.3)" }}
+
             >
               {serviceIcons[idx]}
               <h4>{service.title}</h4>

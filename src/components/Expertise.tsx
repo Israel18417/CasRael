@@ -49,7 +49,8 @@ export default function Expertise({ profile }: ExpertiseProps) {
         <div className="expertise-section">
           <motion.h3 variants={itemVariants}>Core Expertise</motion.h3>
           <motion.div className="expertise-grid">
-            {profile.coreExpertise.map((area, idx) => (
+            {profile.coreExpertise.map((area) => (
+
               <motion.article
                 key={area.title}
                 className="expertise-card"

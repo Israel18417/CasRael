@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 
 const CustomCursor: React.FC = () => {
-  const [isHovered, setIsHovered] = useState(false);
   const [isPointer, setIsPointer] = useState(false);
+
 
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
