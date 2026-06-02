@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "../css/Slider3D.css";
-import { projects, profile } from "../js/data";
+import { projects, profile, featuredWorks } from "../js/data";
 import Logo from "./Logo";
 import DeepSpaceBackground from "./DeepSpaceBackground";
 import ScrollProgress from "./ScrollProgress";
@@ -197,6 +197,30 @@ export default function Slider3D() {
           {isAutoPlay ? "Pause" : "Play"}
         </button>
       </div>
+
+      <section className="work-showcase">
+        <div className="section-heading">
+          <h2>Other Notable Work</h2>
+          <p>Explore additional live sites and portfolio pieces that demonstrate website launches, product showcases, and real projects.</p>
+        </div>
+
+        <div className="work-grid">
+          {featuredWorks.map((item) => (
+            <a
+              key={item.id}
+              href={item.link}
+              target="_blank"
+              rel="noreferrer"
+              className="work-card"
+            >
+              <span className="work-tag">{item.tag}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <span className="work-link">{item.link.replace(/^https?:\/\//, "")}</span>
+            </a>
+          ))}
+        </div>
+      </section>
 
       <Expertise profile={profile} />
       <Services profile={profile} />

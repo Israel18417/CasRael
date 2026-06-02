@@ -1078,6 +1078,88 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 1000px;
 }
 
+.work-showcase {
+  width: 100%;
+  max-width: 1000px;
+  margin: 60px auto 0;
+  padding: 0 20px;
+}
+
+.work-showcase .section-heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.work-showcase h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin-bottom: 12px;
+}
+
+.work-showcase p {
+  color: var(--clr-text-muted);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 28px;
+  background: hsla(0, 0%, 100%, 0.05);
+  border: 1px solid hsla(255, 255%, 255%, 0.08);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+  color: white;
+  text-decoration: none;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(100, 200, 255, 0.4);
+  background: hsla(0, 0%, 100%, 0.09);
+}
+
+.work-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 8px 16px;
+  background: rgba(100, 200, 255, 0.15);
+  color: #a5f3fc;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.work-card h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.work-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.7;
+}
+
+.work-link {
+  margin-top: auto;
+  color: var(--clr-primary);
+  font-weight: 700;
+  word-break: break-all;
+}
+
 .autoplay-toggle {
   position: static;
   width: auto;
@@ -1131,6 +1213,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 480px;
   }
 
+  .work-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+
   .nav-btn.prev { left: -60px; }
   .nav-btn.next { right: -60px; }
 }
@@ -1146,6 +1232,14 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px 20px;
     flex-direction: column;
     gap: 12px;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
   }
 
   .site-header.scrolled {

@@ -74,6 +74,38 @@ export const projects: Project[] = [
   },
 ];
 
+export interface FeaturedWork {
+  id: number;
+  title: string;
+  description: string;
+  link: string;
+  tag: string;
+}
+
+export const featuredWorks: FeaturedWork[] = [
+  {
+    id: 1,
+    title: "Postybridges",
+    description: "An interactive launch experience highlighting marketing strategy, custom visuals, and conversion-focused content.",
+    link: "https://postybridges.com",
+    tag: "Live Site",
+  },
+  {
+    id: 2,
+    title: "My SIWES Project",
+    description: "A student showcase using a Vercel-hosted portfolio project to demonstrate product development and deployment skills.",
+    link: "https://my-siwesproject.vercel.app",
+    tag: "Live Site",
+  },
+  {
+    id: 3,
+    title: "CasRael Showcase",
+    description: "A modern portfolio example of technology, branding, and media innovation built for digital-first clients.",
+    link: "https://casrael.vercel.app",
+    tag: "Portfolio",
+  },
+];
+
 export interface Profile {
   name: string;
   owner: string;
