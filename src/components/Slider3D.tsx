@@ -117,6 +117,17 @@ export default function Slider3D() {
         viewport={{ once: true }}
         transition={{ duration: 1 }}
       >
+        <motion.div
+          className="section-heading"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2>Featured Work</h2>
+          <p>Browse sample projects and case studies showcasing technology, branding, media production, and business strategy.</p>
+        </motion.div>
+
         <div className="slider-viewport" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
           {projects.map((project: Project, index: number) => (
             <div
