@@ -79,6 +79,7 @@ export interface FeaturedWork {
   title: string;
   description: string;
   link: string;
+  image: string;
   tag: string;
 }
 
@@ -88,6 +89,7 @@ export const featuredWorks: FeaturedWork[] = [
     title: "Postybridges",
     description: "An interactive launch experience highlighting marketing strategy, custom visuals, and conversion-focused content.",
     link: "https://postybridges.com",
+    image: "https://s.wordpress.com/mshots/v1/https://postybridges.com?w=700",
     tag: "Live Site",
   },
   {
@@ -95,6 +97,7 @@ export const featuredWorks: FeaturedWork[] = [
     title: "My SIWES Project",
     description: "A student showcase using a Vercel-hosted portfolio project to demonstrate product development and deployment skills.",
     link: "https://my-siwesproject.vercel.app",
+    image: "https://s.wordpress.com/mshots/v1/https://my-siwesproject.vercel.app?w=700",
     tag: "Live Site",
   },
   {
@@ -102,6 +105,7 @@ export const featuredWorks: FeaturedWork[] = [
     title: "CasRael Showcase",
     description: "A modern portfolio example of technology, branding, and media innovation built for digital-first clients.",
     link: "https://casrael.vercel.app",
+    image: "https://s.wordpress.com/mshots/v1/https://casrael.vercel.app?w=700",
     tag: "Portfolio",
   },
 ];

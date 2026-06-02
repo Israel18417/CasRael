@@ -200,8 +200,8 @@ export default function Slider3D() {
 
       <section className="work-showcase">
         <div className="section-heading">
-          <h2>Other Notable Work</h2>
-          <p>Explore additional live sites and portfolio pieces that demonstrate website launches, product showcases, and real projects.</p>
+          <h2>More Work</h2>
+          <p>See additional live projects with real screenshots, including website launches and portfolio demos.</p>
         </div>
 
         <div className="work-grid">
@@ -213,10 +213,15 @@ export default function Slider3D() {
               rel="noreferrer"
               className="work-card"
             >
-              <span className="work-tag">{item.tag}</span>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <span className="work-link">{item.link.replace(/^https?:\/\//, "")}</span>
+              <div className="work-card-image">
+                <img src={item.image} alt={`${item.title} screenshot`} />
+              </div>
+              <div className="work-card-body">
+                <span className="work-tag">{item.tag}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <span className="work-link">{item.link.replace(/^https?:\/\//, "")}</span>
+              </div>
             </a>
           ))}
         </div>
