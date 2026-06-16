@@ -108,6 +108,22 @@ export const featuredWorks: FeaturedWork[] = [
     image: "https://s.wordpress.com/mshots/v1/https://casrael.vercel.app?w=700",
     tag: "Portfolio",
   },
+  {
+    id: 4,
+    title: "Bold Life Ladies Initiative",
+    description: "A non-governmental organization empowering women and girls through leadership, education scholarships, and entrepreneurial mentorship.",
+    link: "https://blli.vercel.app",
+    image: "https://s.wordpress.com/mshots/v1/https://blli.vercel.app?w=700",
+    tag: "Live Site",
+  },
+  {
+    id: 5,
+    title: "CSC426 Project Portal",
+    description: "A student portal showcasing practical assignments, including a premium calculator GUI and a secure user authentication portal.",
+    link: "https://csc426.vercel.app",
+    image: "https://s.wordpress.com/mshots/v1/https://csc426.vercel.app?w=700",
+    tag: "Portal Site",
+  },
 ];
 
 export interface Profile {
