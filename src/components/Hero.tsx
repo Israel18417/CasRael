@@ -50,7 +50,12 @@ export default function Hero({ profile }: HeroProps) {
 
         <motion.div className="hero-actions" variants={itemVariants}>
 
-          <a href={`mailto:${profile.contactEmail}`} className="btn-primary">
+          <a
+            href={profile.whatsapp || `mailto:${profile.contactEmail}`}
+            className="btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Contact Me
           </a>
           <a

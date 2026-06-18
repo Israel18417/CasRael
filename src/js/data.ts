@@ -138,6 +138,7 @@ export interface Profile {
   serviceExamples: Service[];
   contactEmail: string;
   phone: string;
+  whatsapp?: string;
   website: string;
   skills: string[];
 }
@@ -226,6 +227,7 @@ export const profile: Profile = {
   ],
   contactEmail: "mycasrael@gmail.com",
   phone: "+234 904 698 8683",
+  whatsapp: "https://wa.me/2349046988683",
   website: "https://casrael.vercel.app",
   skills: ["React", "TypeScript", "3D UI", "Motion Design", "Responsive Layout"],
 };
