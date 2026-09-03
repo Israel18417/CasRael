@@ -258,7 +258,7 @@ export default function Slider3D() {
       <Footer profile={profile} />
 
       <button
-        className="back-to-top"
+        className={`back-to-top ${isScrolled ? "visible" : ""}`}
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         aria-label="Back to top"
