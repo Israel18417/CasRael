@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type CSSProperties } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Project {
@@ -58,7 +58,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             style={
               {
                 "--project-color": project.color,
-              } as any
+              } as CSSProperties
             }
           >
             <button className="modal-close" onClick={onClose} aria-label="Close modal">

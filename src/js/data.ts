@@ -129,7 +129,6 @@ export const featuredWorks: FeaturedWork[] = [
 export interface Profile {
   name: string;
   owner: string;
-  role: string;
   location: string;
   description: string;
   brandStory: string;
@@ -151,13 +150,11 @@ export interface Expertise {
 export interface Service {
   title: string;
   description: string;
-  icon?: string; 
 }
 
 export const profile: Profile = {
   name: "CasRael",
   owner: "Israel Ogunnaike",
-  role: "Technology, Brand & Media Innovation",
   location: "Based in Lagos and Ondo state, Nigeria",
   description:
     "Empowering ambitious brands with cutting-edge technology, strategic product management, and high-impact digital storytelling.",

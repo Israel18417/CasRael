@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, type CSSProperties } from "react";
 import { motion } from "framer-motion";
 import "../css/Slider3D.css";
 import { projects, profile, featuredWorks } from "../js/data";
@@ -10,6 +10,7 @@ import Hero from "./Hero";
 import Expertise from "./Expertise";
 import Services from "./Services";
 import ContactForm from "./ContactForm";
+import Footer from "./Footer";
 
 interface Project {
   id: number;
@@ -24,8 +25,8 @@ export default function Slider3D() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [navOpen, setNavOpen] = useState(false);
 
-  // Swipe logic
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -103,10 +104,30 @@ export default function Slider3D() {
         <Logo />
         <nav className="site-nav">
           <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
+
+        <button
+          className={`hamburger ${navOpen ? "open" : ""}`}
+          aria-label={navOpen ? "Close menu" : "Open menu"}
+          onClick={() => setNavOpen((o) => !o)}
+        >
+          <span /><span /><span />
+        </button>
       </header>
+
+      <div
+        className={`mobile-nav-overlay ${navOpen ? "open" : ""}`}
+        onClick={() => setNavOpen(false)}
+      />
+      <nav className={`mobile-nav-drawer ${navOpen ? "open" : ""}`}>
+        <a href="#projects" onClick={() => setNavOpen(false)}>Projects</a>
+        <a href="#work" onClick={() => setNavOpen(false)}>Work</a>
+        <a href="#about" onClick={() => setNavOpen(false)}>About</a>
+        <a href="#contact" onClick={() => setNavOpen(false)}>Contact</a>
+      </nav>
 
       <Hero profile={profile} />
 
@@ -136,7 +157,7 @@ export default function Slider3D() {
               style={
                 {
                   "--accent-color": project.color,
-                } as any
+                } as CSSProperties
               }
             >
               <div className="flip-card" onClick={() => setSelectedProject(project)}>
@@ -163,7 +184,6 @@ export default function Slider3D() {
           ))}
         </div>
 
-        {/* Navigation Buttons */}
         <button className="nav-btn prev" onClick={handlePrev} aria-label="Previous slide">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <polyline points="15 18 9 12 15 6"></polyline>
@@ -198,7 +218,7 @@ export default function Slider3D() {
         </button>
       </div>
 
-      <section className="work-showcase">
+      <section className="work-showcase" id="work">
         <div className="section-heading">
           <h2>More Work</h2>
           <p>See additional live projects with real screenshots, including website launches and portfolio demos.</p>
@@ -220,7 +240,12 @@ export default function Slider3D() {
                 <span className="work-tag">{item.tag}</span>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
-                <span className="work-link">{item.link.replace(/^https?:\/\//, "")}</span>
+                <span className="visit-arrow">
+                  {item.link.replace(/^https?:\/\//, "")}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
               </div>
             </a>
           ))}
@@ -230,6 +255,7 @@ export default function Slider3D() {
       <Expertise profile={profile} />
       <Services profile={profile} />
       <ContactForm profile={profile} />
+      <Footer profile={profile} />
 
       <button
         className="back-to-top"

@@ -5,6 +5,13 @@ interface ExpertiseProps {
   profile: Profile;
 }
 
+const stats = [
+  { number: "5+", label: "Years Experience" },
+  { number: "20+", label: "Projects Delivered" },
+  { number: "4", label: "Countries Served" },
+  { number: "∞", label: "Ideas Brewing" },
+];
+
 export default function Expertise({ profile }: ExpertiseProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -29,6 +36,7 @@ export default function Expertise({ profile }: ExpertiseProps) {
   return (
     <motion.section
       className="brand-story-panel"
+      id="about"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -40,6 +48,16 @@ export default function Expertise({ profile }: ExpertiseProps) {
         </motion.span>
         <motion.h2 variants={itemVariants}>CasRael is more than a portfolio.</motion.h2>
         <motion.p variants={itemVariants}>{profile.brandStory}</motion.p>
+
+        <motion.div className="stats-row" variants={itemVariants}>
+          {stats.map((s) => (
+            <div className="stat-item" key={s.label}>
+              <span className="stat-number">{s.number}</span>
+              <span className="stat-label">{s.label}</span>
+            </div>
+          ))}
+        </motion.div>
+
         <motion.ul className="brand-values" variants={itemVariants}>
           {profile.brandValues.map((value) => (
             <li key={value}>{value}</li>
@@ -50,7 +68,6 @@ export default function Expertise({ profile }: ExpertiseProps) {
           <motion.h3 variants={itemVariants}>Core Expertise</motion.h3>
           <motion.div className="expertise-grid">
             {profile.coreExpertise.map((area) => (
-
               <motion.article
                 key={area.title}
                 className="expertise-card"

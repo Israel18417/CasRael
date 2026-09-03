@@ -5,41 +5,49 @@ interface ServicesProps {
   profile: Profile;
 }
 
-const serviceIcons = [
-  // Web & App Development
-  (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="service-icon" aria-hidden="true">
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path d="M8 8h8" />
-      <path d="M8 12h.01" />
-      <path d="M12 12h.01" />
-      <path d="M16 12h.01" />
-    </svg>
-  ),
-  // Brand & Product Strategy
-  (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="service-icon" aria-hidden="true">
-      <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7l3-7z" />
-    </svg>
-  ),
-  // Media, Events & Coverage
-  (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="service-icon" aria-hidden="true">
-      <rect x="3" y="7" width="18" height="12" rx="2" />
-      <path d="M7 7l3-3h4l3 3" />
-      <circle cx="12" cy="13" r="3" />
-    </svg>
-  ),
-  // Trade & Global Business
-  (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="service-icon" aria-hidden="true">
-      <circle cx="12" cy="12" r="8" />
-      <path d="M12 4v16" />
-      <path d="M4 12h16" />
-      <path d="M7 7l3 3" />
-      <path d="M14 14l3 3" />
-    </svg>
-  ),
+const serviceConfig = [
+  {
+    glow: "rgba(111, 208, 255, 0.25)",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="service-icon" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="M8 8h8" />
+        <path d="M8 12h.01" />
+        <path d="M12 12h.01" />
+        <path d="M16 12h.01" />
+      </svg>
+    ),
+  },
+  {
+    glow: "rgba(139, 92, 246, 0.25)",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="service-icon" aria-hidden="true">
+        <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7l3-7z" />
+      </svg>
+    ),
+  },
+  {
+    glow: "rgba(236, 72, 153, 0.25)",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="service-icon" aria-hidden="true">
+        <rect x="3" y="7" width="18" height="12" rx="2" />
+        <path d="M7 7l3-3h4l3 3" />
+        <circle cx="12" cy="13" r="3" />
+      </svg>
+    ),
+  },
+  {
+    glow: "rgba(16, 185, 129, 0.25)",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="service-icon" aria-hidden="true">
+        <circle cx="12" cy="12" r="8" />
+        <path d="M12 4v16" />
+        <path d="M4 12h16" />
+        <path d="M7 7l3 3" />
+        <path d="M14 14l3 3" />
+      </svg>
+    ),
+  },
 ];
 
 export default function Services({ profile }: ServicesProps) {
@@ -83,14 +91,24 @@ export default function Services({ profile }: ServicesProps) {
               className="service-card"
               variants={itemVariants}
               whileHover={{ y: -5, borderColor: "rgba(255, 255, 255, 0.3)" }}
-
+              style={{ "--service-glow": serviceConfig[idx]?.glow } as React.CSSProperties}
             >
-              {serviceIcons[idx]}
+              <div className="service-icon-wrap">
+                {serviceConfig[idx]?.icon}
+              </div>
               <h4>{service.title}</h4>
               <p>{service.description}</p>
             </motion.article>
           ))}
         </motion.div>
+
+        <motion.a
+          href="#contact"
+          className="service-cta"
+          variants={itemVariants}
+        >
+          Ready to start? Get in touch →
+        </motion.a>
       </div>
     </motion.section>
   );

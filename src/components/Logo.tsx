@@ -22,7 +22,6 @@ export default function Logo() {
             </filter>
           </defs>
           
-          {/* Background Shape */}
           <rect 
             x="8" y="8" width="48" height="48" rx="14" 
             fill="rgba(255, 255, 255, 0.03)" 
@@ -30,7 +29,6 @@ export default function Logo() {
             strokeWidth="1"
           />
           
-          {/* Abstract C/R Symbol */}
           <path
             d="M22 24C22 24 24 20 32 20C40 20 42 24 42 24"
             stroke="url(#logoGradient)"
