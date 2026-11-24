@@ -137,7 +137,7 @@ export default function Slider3D() {
           transition={{ duration: 0.6 }}
         >
           <h2>Featured Work</h2>
-          <p>Browse sample projects and case studies showcasing technology, branding, media production, and business strategy.</p>
+          <p>Browse all seven of my GitHub projects, including live sites and source repositories.</p>
         </motion.div>
 
         <div className="slider-viewport" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
@@ -212,7 +212,7 @@ export default function Slider3D() {
       <section className="work-showcase" id="work">
         <div className="section-heading">
           <h2>More Work</h2>
-          <p>See additional live projects with real screenshots, including website launches and portfolio demos.</p>
+          <p>Explore every project with a live preview where available, or open its GitHub repository.</p>
         </div>
 
         <div className="work-grid">

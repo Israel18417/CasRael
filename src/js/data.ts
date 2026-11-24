@@ -1,6 +1,6 @@
 // src/js/data.ts
 
-export interface Project {
+interface ProjectDetails {
   id: number;
   title: string;
   category: string;
@@ -9,9 +9,13 @@ export interface Project {
   fullDescription?: string;
   techStack?: string[];
   color: string;
-  sourceUrl: string;
-  liveUrl?: string;
 }
+
+export type Project = ProjectDetails &
+  (
+    | { sourceUrl: string; liveUrl?: string }
+    | { sourceUrl?: never; liveUrl: string }
+  );
 
 export const projects: Project[] = [
   {
@@ -85,6 +89,16 @@ export const projects: Project[] = [
     sourceUrl: "https://github.com/Israel18417/boldlifeladiesini",
     liveUrl: "https://blli.vercel.app",
   },
+  {
+    id: 7,
+    title: "My SIWES Project",
+    category: "Education",
+    image: "https://s.wordpress.com/mshots/v1/https://my-siwesproject.vercel.app?w=800",
+    description: "A student project showcase demonstrating product development and deployment.",
+    fullDescription: "A Vercel-hosted student portfolio presenting practical work and projects developed during the SIWES programme.",
+    color: "#f97316",
+    liveUrl: "https://my-siwesproject.vercel.app",
+  },
 ];
 
 export interface FeaturedWork {
@@ -96,48 +110,22 @@ export interface FeaturedWork {
   tag: string;
 }
 
-export const featuredWorks: FeaturedWork[] = [
-  {
-    id: 1,
-    title: "Postybridges",
-    description: "An interactive launch experience highlighting marketing strategy, custom visuals, and conversion-focused content.",
-    link: "https://postybridges.com",
-    image: "https://s.wordpress.com/mshots/v1/https://postybridges.com?w=700",
-    tag: "Live Site",
-  },
-  {
-    id: 2,
-    title: "My SIWES Project",
-    description: "A student showcase using a Vercel-hosted portfolio project to demonstrate product development and deployment skills.",
-    link: "https://my-siwesproject.vercel.app",
-    image: "https://s.wordpress.com/mshots/v1/https://my-siwesproject.vercel.app?w=700",
-    tag: "Live Site",
-  },
-  {
-    id: 3,
-    title: "CasRael Showcase",
-    description: "A modern portfolio example of technology, branding, and media innovation built for digital-first clients.",
-    link: "https://casrael.vercel.app",
-    image: "https://s.wordpress.com/mshots/v1/https://casrael.vercel.app?w=700",
-    tag: "Portfolio",
-  },
-  {
-    id: 4,
-    title: "Bold Life Ladies Initiative",
-    description: "A non-governmental organization empowering women and girls through leadership, education scholarships, and entrepreneurial mentorship.",
-    link: "https://blli.vercel.app",
-    image: "https://s.wordpress.com/mshots/v1/https://blli.vercel.app?w=700",
-    tag: "Live Site",
-  },
-  {
-    id: 5,
-    title: "CSC426 Project Portal",
-    description: "A student portal showcasing practical assignments, including a premium calculator GUI and a secure user authentication portal.",
-    link: "https://csc426.vercel.app",
-    image: "https://s.wordpress.com/mshots/v1/https://csc426.vercel.app?w=700",
-    tag: "Portal Site",
-  },
-];
+const getProjectLink = (project: Project): string => {
+  const link = project.liveUrl ?? project.sourceUrl;
+  if (!link) {
+    throw new Error(`Project "${project.title}" must have a live or source link.`);
+  }
+  return link;
+};
+
+export const featuredWorks: FeaturedWork[] = projects.map((project) => ({
+  id: project.id,
+  title: project.title,
+  description: project.description,
+  link: getProjectLink(project),
+  image: project.image,
+  tag: project.liveUrl ? "Live Site" : "GitHub",
+}));
 
 export interface Profile {
   name: string;

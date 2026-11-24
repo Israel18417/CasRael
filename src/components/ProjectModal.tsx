@@ -113,15 +113,17 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                       Live Preview
                     </a>
                   )}
-                  <a
-                    href={project.sourceUrl}
-                    className={project.liveUrl ? "btn-secondary" : "btn-primary"}
-                    style={!project.liveUrl ? { background: project.color, color: "#fff" } : undefined}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Source
-                  </a>
+                  {project.sourceUrl && (
+                    <a
+                      href={project.sourceUrl}
+                      className={project.liveUrl ? "btn-secondary" : "btn-primary"}
+                      style={!project.liveUrl ? { background: project.color, color: "#fff" } : undefined}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Source
+                    </a>
+                  )}
                 </motion.div>
               </motion.div>
             </div>
