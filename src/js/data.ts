@@ -20,14 +20,15 @@ export type Project = ProjectDetails &
 export const projects: Project[] = [
   {
     id: 1,
-    title: "All Rechargeable",
+    title: "All Rechargeable Plus",
     category: "E-commerce",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    image: "https://s.wordpress.com/mshots/v1/https://all-rechargeable.web.app?w=800",
     description: "An online storefront for rechargeable essentials, with product discovery, category browsing, and WhatsApp ordering.",
     fullDescription: "A Next.js storefront for rechargeable products serving homes, offices, and businesses in Nigeria. It features category navigation, featured products backed by Firebase, and direct WhatsApp ordering.",
     techStack: ["Next.js", "React", "TypeScript", "Firebase", "Tailwind CSS"],
     color: "#3b82f6",
     sourceUrl: "https://github.com/Israel18417/all-rechargeable",
+    liveUrl: "https://all-rechargeable.web.app/",
   },
   {
     id: 2,
