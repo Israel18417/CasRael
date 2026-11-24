@@ -1,7 +1,7 @@
 import { useState, useEffect, type CSSProperties } from "react";
 import { motion } from "framer-motion";
 import "../css/Slider3D.css";
-import { projects, profile, featuredWorks } from "../js/data";
+import { projects, profile, featuredWorks, type Project } from "../js/data";
 import Logo from "./Logo";
 import DeepSpaceBackground from "./DeepSpaceBackground";
 import ScrollProgress from "./ScrollProgress";
@@ -11,15 +11,6 @@ import Expertise from "./Expertise";
 import Services from "./Services";
 import ContactForm from "./ContactForm";
 import Footer from "./Footer";
-
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  description: string;
-  image: string;
-  color: string;
-}
 
 export default function Slider3D() {
   const [currentIndex, setCurrentIndex] = useState(0);

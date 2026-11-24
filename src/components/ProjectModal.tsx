@@ -1,16 +1,6 @@
 import React, { type CSSProperties } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  image: string;
-  description: string;
-  fullDescription?: string;
-  techStack?: string[];
-  color: string;
-}
+import type { Project } from "../js/data";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -112,10 +102,24 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                 )}
 
                 <motion.div className="modal-actions" variants={itemVariants}>
-                  <a href="#" className="btn-primary" style={{ background: project.color, color: "#fff" }}>
-                    Live Preview
-                  </a>
-                  <a href="#" className="btn-secondary">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      className="btn-primary"
+                      style={{ background: project.color, color: "#fff" }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live Preview
+                    </a>
+                  )}
+                  <a
+                    href={project.sourceUrl}
+                    className={project.liveUrl ? "btn-secondary" : "btn-primary"}
+                    style={!project.liveUrl ? { background: project.color, color: "#fff" } : undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     View Source
                   </a>
                 </motion.div>

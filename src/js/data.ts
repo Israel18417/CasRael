@@ -1,6 +1,6 @@
 // src/js/data.ts
 
-interface Project {
+export interface Project {
   id: number;
   title: string;
   category: string;
@@ -9,68 +9,81 @@ interface Project {
   fullDescription?: string;
   techStack?: string[];
   color: string;
+  sourceUrl: string;
+  liveUrl?: string;
 }
 
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Full-Stack Innovation",
-    category: "Technology",
+    title: "All Rechargeable",
+    category: "E-commerce",
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
-    description: "Building scalable web applications and technical solutions that bridge the gap between complex backend logic and intuitive frontend experiences.",
-    fullDescription: "A comprehensive exploration of full-stack architectures, focusing on performance, scalability, and user-centric design. This project involved implementing robust APIs, real-time data synchronization, and a highly responsive frontend using modern frameworks.",
-    techStack: ["React", "Node.js", "PostgreSQL", "Socket.io", "Redis"],
+    description: "An online storefront for rechargeable essentials, with product discovery, category browsing, and WhatsApp ordering.",
+    fullDescription: "A Next.js storefront for rechargeable products serving homes, offices, and businesses in Nigeria. It features category navigation, featured products backed by Firebase, and direct WhatsApp ordering.",
+    techStack: ["Next.js", "React", "TypeScript", "Firebase", "Tailwind CSS"],
     color: "#3b82f6",
+    sourceUrl: "https://github.com/Israel18417/all-rechargeable",
   },
   {
     id: 2,
-    title: "Strategic Brand Design",
-    category: "Branding",
-    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop",
-    description: "Crafting unique visual identities and brand positioning strategies that help visionary businesses stand out in a crowded digital landscape.",
-    fullDescription: "Strategic branding goes beyond logos. It's about creating a narrative that resonates. This project focuses on market research, visual language development, and cohesive brand messaging across all digital touchpoints.",
-    techStack: ["Illustrator", "Figma", "Photoshop", "Brand Strategy", "Typography"],
+    title: "CasRael Portfolio",
+    category: "Portfolio",
+    image: "https://s.wordpress.com/mshots/v1/https://casrael.vercel.app?w=800",
+    description: "A responsive portfolio showcasing CasRael's work in technology, brand strategy, and digital storytelling.",
+    fullDescription: "CasRael's creative portfolio brings together selected projects and services in a responsive, animated web experience.",
+    techStack: ["React", "TypeScript", "Vite", "Framer Motion"],
     color: "#8b5cf6",
+    sourceUrl: "https://github.com/Israel18417/CasRael",
+    liveUrl: "https://casrael.vercel.app",
   },
   {
     id: 3,
-    title: "Digital Storytelling",
-    category: "Media",
-    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&h=600&fit=crop",
-    description: "Capturing the essence of events and brand narratives through high-quality media production, digital coverage, and cinematic storytelling.",
-    fullDescription: "Using the power of video and photography to tell compelling stories. This project highlights event coverage techniques, post-production workflows, and the integration of digital media into marketing campaigns.",
-    techStack: ["Premiere Pro", "After Effects", "Cinematography", "Storyboarding"],
+    title: "PostyBridges",
+    category: "Automotive Technology",
+    image: "https://s.wordpress.com/mshots/v1/https://postybridges.com?w=800",
+    description: "A showcase for GPS tracking, dash cameras, modern infotainment systems, and smart push-start upgrades.",
+    fullDescription: "An automotive technology project focused on connected vehicle accessories, from real-time GPS tracking and dash cameras to infotainment and keyless push-start systems.",
+    techStack: ["HTML", "CSS", "JavaScript"],
     color: "#ec4899",
+    sourceUrl: "https://github.com/Israel18417/PostyBridges",
+    liveUrl: "https://postybridges.com",
   },
   {
     id: 4,
-    title: "Global Trade Logistics",
-    category: "Business",
-    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&h=600&fit=crop",
-    description: "Expert support for international trade, importation, and exportation, leveraging technology to streamline global business operations.",
-    fullDescription: "Optimizing the flow of goods across borders. This project details the digital transformation of logistics, including tracking systems, automated documentation, and global supply chain management.",
-    techStack: ["Supply Chain", "ERP Systems", "Digital Logistics", "Global Trade Compliance"],
+    title: "CSC426 Project Portal",
+    category: "Education",
+    image: "https://s.wordpress.com/mshots/v1/https://csc426.vercel.app?w=800",
+    description: "A student portal for practical coursework, including a premium calculator and an authentication project.",
+    fullDescription: "A collection of practical assignments and projects developed for CSC426, presented through a student project portal.",
+    techStack: ["HTML", "CSS", "JavaScript"],
     color: "#10b981",
+    sourceUrl: "https://github.com/Israel18417/CSC426",
+    liveUrl: "https://csc426.vercel.app",
   },
   {
     id: 5,
-    title: "Interactive 3D UI",
-    category: "Design",
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop",
-    description: "Designing immersive user interfaces with 3D-inspired motion and glassmorphism that engage users and elevate brand perception.",
-    fullDescription: "Exploring the boundaries of web UI. This project showcases the use of Three.js, Framer Motion, and CSS 3D transforms to create depth and interactivity that traditional flat designs can't match.",
-    techStack: ["Three.js", "Framer Motion", "CSS 3D", "WebGL", "React Spring"],
+    title: "CasRael Automobiles",
+    category: "Automotive",
+    image: "https://s.wordpress.com/mshots/v1/https://casrael-auto.vercel.app?w=800",
+    description: "A luxury vehicle registry and inventory experience for sourcing performance, luxury, and electric cars.",
+    fullDescription: "A curated automobile portfolio with searchable marques, vehicle inventory, detailed specifications, and sourcing inquiry flows.",
+    techStack: ["HTML", "CSS", "JavaScript"],
     color: "#f59e0b",
+    sourceUrl: "https://github.com/Israel18417/CasRael-Auto",
+    liveUrl: "https://casrael-auto.vercel.app",
   },
   {
     id: 6,
-    title: "Product Strategy",
-    category: "Management",
-    image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&h=600&fit=crop",
-    description: "Defining product roadmaps and management frameworks that ensure technological innovations meet real-world business goals.",
-    fullDescription: "Bridging the gap between engineering and business. This project outlines the product lifecycle from ideation to launch, focusing on MVP definition, user feedback loops, and iterative development.",
-    techStack: ["Product Roadmap", "Agile", "User Research", "KPI Tracking", "Stakeholder Management"],
+    title: "Bold Life Ladies Initiative",
+    category: "Nonprofit",
+    image: "https://s.wordpress.com/mshots/v1/https://blli.vercel.app?w=800",
+    description: "An NGO website supporting the empowerment of women and girls through education, leadership, and mentorship.",
+    fullDescription: "A digital presence for the Bold Life Ladies Initiative, highlighting its work in leadership, education scholarships, and entrepreneurial mentorship.",
+    techStack: ["HTML", "CSS", "JavaScript"],
     color: "#06b6d4",
+    sourceUrl: "https://github.com/Israel18417/boldlifeladiesini",
+    liveUrl: "https://blli.vercel.app",
   },
 ];
 
