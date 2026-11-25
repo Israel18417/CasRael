@@ -7,15 +7,13 @@ interface ProjectDetails {
   image: string;
   description: string;
   fullDescription?: string;
+  projectRole?: string;
+  highlights: string[];
   techStack?: string[];
   color: string;
 }
 
-export type Project = ProjectDetails &
-  (
-    | { sourceUrl: string; liveUrl?: string }
-    | { sourceUrl?: never; liveUrl: string }
-  );
+export type Project = ProjectDetails & { liveUrl: string };
 
 export const projects: Project[] = [
   {
@@ -23,11 +21,11 @@ export const projects: Project[] = [
     title: "All Rechargeable Plus",
     category: "E-commerce",
     image: "https://s.wordpress.com/mshots/v1/https://all-rechargeable.web.app?w=800",
-    description: "An online storefront for rechargeable essentials, with product discovery, category browsing, and WhatsApp ordering.",
-    fullDescription: "A Next.js storefront for rechargeable products serving homes, offices, and businesses in Nigeria. It features category navigation, featured products backed by Firebase, and direct WhatsApp ordering.",
+    description: "An online shop for rechargeable products, with category browsing and WhatsApp enquiries.",
+    fullDescription: "The store presents rechargeable products for homes, offices, and businesses in Nigeria. Visitors can browse categories, view selected products, and contact the team through WhatsApp.",
+    highlights: ["Product categories", "Featured products powered by Firebase", "WhatsApp enquiries"],
     techStack: ["Next.js", "React", "TypeScript", "Firebase", "Tailwind CSS"],
     color: "#3b82f6",
-    sourceUrl: "https://github.com/Israel18417/all-rechargeable",
     liveUrl: "https://all-rechargeable.web.app/",
   },
   {
@@ -35,11 +33,11 @@ export const projects: Project[] = [
     title: "CasRael Portfolio",
     category: "Portfolio",
     image: "https://s.wordpress.com/mshots/v1/https://casrael.vercel.app?w=800",
-    description: "A responsive portfolio showcasing CasRael's work in technology, brand strategy, and digital storytelling.",
-    fullDescription: "CasRael's creative portfolio brings together selected projects and services in a responsive, animated web experience.",
+    description: "CasRael’s studio site, bringing selected work, services, and contact details together.",
+    fullDescription: "The site introduces CasRael and its work across technology, brand strategy, and media. It includes project details, service information, and a contact form.",
+    highlights: ["Selected projects and case details", "Studio services", "Contact form"],
     techStack: ["React", "TypeScript", "Vite", "Framer Motion"],
     color: "#8b5cf6",
-    sourceUrl: "https://github.com/Israel18417/CasRael",
     liveUrl: "https://casrael.vercel.app",
   },
   {
@@ -47,11 +45,12 @@ export const projects: Project[] = [
     title: "PostyBridges",
     category: "Automotive Technology",
     image: "https://s.wordpress.com/mshots/v1/https://postybridges.com?w=800",
-    description: "A showcase for GPS tracking, dash cameras, modern infotainment systems, and smart push-start upgrades.",
-    fullDescription: "An automotive technology project focused on connected vehicle accessories, from real-time GPS tracking and dash cameras to infotainment and keyless push-start systems.",
+    description: "A web platform for automotive technology, including GPS trackers, dash cameras, and infotainment.",
+    fullDescription: "PostyBridges presents connected vehicle products, from GPS tracking and dash cameras to infotainment systems and keyless push-starts.",
+    projectRole: "Product & Web Development Lead",
+    highlights: ["Automotive technology", "GPS tracking and dash cameras", "Infotainment and keyless push-starts"],
     techStack: ["HTML", "CSS", "JavaScript"],
     color: "#ec4899",
-    sourceUrl: "https://github.com/Israel18417/PostyBridges",
     liveUrl: "https://postybridges.com",
   },
   {
@@ -59,11 +58,11 @@ export const projects: Project[] = [
     title: "CSC426 Project Portal",
     category: "Education",
     image: "https://s.wordpress.com/mshots/v1/https://csc426.vercel.app?w=800",
-    description: "A student portal for practical coursework, including a premium calculator and an authentication project.",
-    fullDescription: "A collection of practical assignments and projects developed for CSC426, presented through a student project portal.",
+    description: "A portal for CSC426 practical work, including calculator and user-authentication projects.",
+    fullDescription: "The portal gathers practical coursework and assignments for CSC426, including a premium calculator and a user-authentication project.",
+    highlights: ["Coursework and practical assignments", "Calculator project", "User-authentication project"],
     techStack: ["HTML", "CSS", "JavaScript"],
     color: "#10b981",
-    sourceUrl: "https://github.com/Israel18417/CSC426",
     liveUrl: "https://csc426.vercel.app",
   },
   {
@@ -71,11 +70,11 @@ export const projects: Project[] = [
     title: "CasRael Automobiles",
     category: "Automotive",
     image: "https://s.wordpress.com/mshots/v1/https://casrael-auto.vercel.app?w=800",
-    description: "A luxury vehicle registry and inventory experience for sourcing performance, luxury, and electric cars.",
-    fullDescription: "A curated automobile portfolio with searchable marques, vehicle inventory, detailed specifications, and sourcing inquiry flows.",
+    description: "A digital showroom for curated luxury, performance, and electric vehicles.",
+    fullDescription: "Visitors can search represented marques, browse available vehicles, review specifications, and send a sourcing enquiry.",
+    highlights: ["Searchable marque directory", "Vehicle inventory and specifications", "Sourcing enquiry form"],
     techStack: ["HTML", "CSS", "JavaScript"],
     color: "#f59e0b",
-    sourceUrl: "https://github.com/Israel18417/CasRael-Auto",
     liveUrl: "https://casrael-auto.vercel.app",
   },
   {
@@ -83,11 +82,11 @@ export const projects: Project[] = [
     title: "Bold Life Ladies Initiative",
     category: "Nonprofit",
     image: "https://s.wordpress.com/mshots/v1/https://blli.vercel.app?w=800",
-    description: "An NGO website supporting the empowerment of women and girls through education, leadership, and mentorship.",
-    fullDescription: "A digital presence for the Bold Life Ladies Initiative, highlighting its work in leadership, education scholarships, and entrepreneurial mentorship.",
+    description: "A website for an initiative supporting women and girls through education, leadership, and mentorship.",
+    fullDescription: "The site introduces the Bold Life Ladies Initiative and its work in education scholarships, leadership, and entrepreneurial mentorship.",
+    highlights: ["Organisation and programme information", "Education and scholarships", "Leadership and entrepreneurship"],
     techStack: ["HTML", "CSS", "JavaScript"],
     color: "#06b6d4",
-    sourceUrl: "https://github.com/Israel18417/boldlifeladiesini",
     liveUrl: "https://blli.vercel.app",
   },
   {
@@ -95,38 +94,97 @@ export const projects: Project[] = [
     title: "My SIWES Project",
     category: "Education",
     image: "https://s.wordpress.com/mshots/v1/https://my-siwesproject.vercel.app?w=800",
-    description: "A student project showcase demonstrating product development and deployment.",
-    fullDescription: "A Vercel-hosted student portfolio presenting practical work and projects developed during the SIWES programme.",
+    description: "A student portfolio for practical work completed during SIWES.",
+    fullDescription: "A public portfolio collecting student projects and practical work from the SIWES programme.",
+    highlights: ["Student project showcase", "Practical work from SIWES", "Hosted on Vercel"],
     color: "#f97316",
     liveUrl: "https://my-siwesproject.vercel.app",
   },
 ];
 
-export interface FeaturedWork {
-  id: number;
+export interface ProfileExperience {
   title: string;
-  description: string;
-  link: string;
-  image: string;
-  tag: string;
+  organization: string;
+  period: string;
 }
 
-const getProjectLink = (project: Project): string => {
-  const link = project.liveUrl ?? project.sourceUrl;
-  if (!link) {
-    throw new Error(`Project "${project.title}" must have a live or source link.`);
-  }
-  return link;
-};
+export interface ProfileEducation {
+  school: string;
+  qualification: string;
+  period: string;
+}
 
-export const featuredWorks: FeaturedWork[] = projects.map((project) => ({
-  id: project.id,
-  title: project.title,
-  description: project.description,
-  link: getProjectLink(project),
-  image: project.image,
-  tag: project.liveUrl ? "Live Site" : "GitHub",
-}));
+export interface PersonalProfile {
+  name: string;
+  title: string;
+  summary: string;
+  experience: ProfileExperience[];
+  education: ProfileEducation[];
+  skills: string[];
+  languages: string[];
+}
+
+export const personalProfile: PersonalProfile = {
+  name: "Israel Ogunnaike",
+  title: "CEO, CasRael · Product & Web Development Lead",
+  summary:
+    "I’m Israel Ogunnaike, CEO of CasRael and a Computer Science student at Adekunle Ajasin University. My experience and skills span web development, product management, and digital strategy.",
+  experience: [
+    {
+      title: "Product & Web Development Lead",
+      organization: "PostyBridges",
+      period: "2026–Present",
+    },
+    {
+      title: "Intern",
+      organization: "CITS, University of Lagos",
+      period: "2025",
+    },
+    {
+      title: "Junior Staff",
+      organization: "Eman Print",
+      period: "2022–2024",
+    },
+    {
+      title: "Shop Assistant",
+      organization: "Cyber Cafe",
+      period: "2021",
+    },
+    {
+      title: "Secretary",
+      organization: "Tutelage Educational Services",
+      period: "2018–2019",
+    },
+  ],
+  education: [
+    {
+      school: "Adekunle Ajasin University",
+      qualification: "B.Sc. Computer Science",
+      period: "2023–2026",
+    },
+    {
+      school: "National College",
+      qualification: "SSCE",
+      period: "2018–2021",
+    },
+    {
+      school: "C.M.S Grammar School",
+      qualification: "BECE",
+      period: "2014–2017",
+    },
+  ],
+  skills: [
+    "Product management and strategy",
+    "Web development",
+    "Business and digital strategy",
+    "Leadership and team management",
+    "Critical thinking and problem-solving",
+    "Project management",
+    "Stakeholder communication",
+    "Creativity and innovation",
+  ],
+  languages: ["English", "Yoruba"],
+};
 
 export interface Profile {
   name: string;
@@ -152,6 +210,7 @@ export interface Expertise {
 export interface Service {
   title: string;
   description: string;
+  scope?: "core" | "additional";
 }
 
 export const profile: Profile = {
@@ -161,7 +220,7 @@ export const profile: Profile = {
   description:
     "Empowering ambitious brands with cutting-edge technology, strategic product management, and high-impact digital storytelling.",
   brandStory:
-    "CasRael is the specialized creative engine led by Israel Ogunnaike. We bridge the gap between complex web technology and meaningful brand communication, delivering high-end products and global business strategies for a digital-first world.",
+    "CasRael is a brand and technology studio led by Israel Ogunnaike. The work ranges from websites and digital products to brand direction and media. This portfolio brings together selected projects and the services behind them.",
 
   coreExpertise: [
     {
@@ -188,40 +247,33 @@ export const profile: Profile = {
         "Media production",
       ],
     },
-    {
-      title: "Global Business",
-      items: [
-        "Importation",
-        "Exportation",
-        "International trade support",
-      ],
-    },
   ],
   brandValues: [
-    "Creative digital storytelling",
-    "3D-inspired interface motion",
-    "Polished web experiences for visionary clients",
+    "Clear thinking before the build",
+    "Useful digital work made for real people",
+    "A close working relationship from brief to launch",
   ],
   serviceExamples: [
     {
       title: "Web & App Development",
       description:
-        "Building responsive web apps, landing pages, and full-stack products with modern frontend and backend tools.",
+        "Designing and building responsive websites, client portals, and web apps from the first brief through launch.",
     },
     {
       title: "Brand & Product Strategy",
       description:
-        "Defining positioning, visual identity, and product direction that make CasRael clients stand out.",
+        "Helping teams shape their positioning, identity, and product direction so people understand what they offer.",
     },
     {
       title: "Media, Events & Coverage",
       description:
-        "Documenting events, crafting digital stories, and producing media assets for campaigns and launches.",
+        "Covering events and creating digital content that gives the people, work, and moment a clear story.",
     },
     {
-      title: "Trade & Global Business",
+      title: "Trade & Global Business Support",
       description:
-        "Supporting import/export workflows and international market entry for ambitious businesses.",
+        "Additional support with import and export workflows and international market entry, available by request.",
+      scope: "additional",
     },
   ],
   contactEmail: "mycasrael@gmail.com",

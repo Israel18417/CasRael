@@ -23,7 +23,7 @@ export default function Footer({ profile }: FooterProps) {
 
         <nav className="footer-nav" aria-label="Footer navigation">
           <a href="#projects">Projects</a>
-          <a href="#work">Work</a>
+          <a href="#services">Services</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>

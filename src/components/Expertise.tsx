@@ -1,18 +1,17 @@
 import { motion } from "framer-motion";
-import { type Profile } from "../js/data";
+import { personalProfile, projects, type Profile } from "../js/data";
 
 interface ExpertiseProps {
   profile: Profile;
 }
 
-const stats = [
-  { number: "5+", label: "Years Experience" },
-  { number: "20+", label: "Projects Delivered" },
-  { number: "4", label: "Countries Served" },
-  { number: "∞", label: "Ideas Brewing" },
-];
-
 export default function Expertise({ profile }: ExpertiseProps) {
+  const stats = [
+    { number: String(projects.length).padStart(2, "0"), label: "Projects in this portfolio" },
+    { number: String(profile.serviceExamples.filter((service) => service.scope !== "additional").length).padStart(2, "0"), label: "Core service areas" },
+    { number: String(personalProfile.languages.length).padStart(2, "0"), label: `Languages: ${personalProfile.languages.join(" & ")}` },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -44,9 +43,9 @@ export default function Expertise({ profile }: ExpertiseProps) {
     >
       <div className="brand-story-copy">
         <motion.span className="eyebrow" variants={itemVariants}>
-          Brand Story
+          About CasRael
         </motion.span>
-        <motion.h2 variants={itemVariants}>CasRael is more than a portfolio.</motion.h2>
+        <motion.h2 variants={itemVariants}>A studio and portfolio led by Israel.</motion.h2>
         <motion.p variants={itemVariants}>{profile.brandStory}</motion.p>
 
         <motion.div className="stats-row" variants={itemVariants}>

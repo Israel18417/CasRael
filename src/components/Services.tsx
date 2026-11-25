@@ -51,6 +51,9 @@ const serviceConfig = [
 ];
 
 export default function Services({ profile }: ServicesProps) {
+  const coreServices = profile.serviceExamples.filter((service) => service.scope !== "additional");
+  const additionalServices = profile.serviceExamples.filter((service) => service.scope === "additional");
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -74,6 +77,7 @@ export default function Services({ profile }: ServicesProps) {
   return (
     <motion.section
       className="service-panel"
+      id="services"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -81,33 +85,57 @@ export default function Services({ profile }: ServicesProps) {
     >
       <div className="service-copy">
         <motion.span className="eyebrow" variants={itemVariants}>
-          CasRael Services
+          Services
         </motion.span>
-        <motion.h2 variants={itemVariants}>How CasRael brings your vision to life</motion.h2>
+        <motion.h2 variants={itemVariants}>What CasRael can help with</motion.h2>
+        <motion.p className="service-intro" variants={itemVariants}>
+          A focused set of services for shaping, building, and sharing digital work.
+        </motion.p>
+        <motion.h3 className="service-group-title" variants={itemVariants}>
+          Core services
+        </motion.h3>
         <motion.div className="service-grid">
-          {profile.serviceExamples.map((service, idx) => (
-            <motion.article
-              key={service.title}
-              className="service-card"
-              variants={itemVariants}
-              whileHover={{ y: -5, borderColor: "rgba(255, 255, 255, 0.3)" }}
-              style={{ "--service-glow": serviceConfig[idx]?.glow } as React.CSSProperties}
-            >
-              <div className="service-icon-wrap">
-                {serviceConfig[idx]?.icon}
-              </div>
-              <h4>{service.title}</h4>
-              <p>{service.description}</p>
-            </motion.article>
-          ))}
+          {coreServices.map((service) => {
+            const idx = profile.serviceExamples.indexOf(service);
+            return (
+              <motion.article
+                key={service.title}
+                className="service-card service-card-core"
+                variants={itemVariants}
+                whileHover={{ y: -5, borderColor: "rgba(255, 255, 255, 0.3)" }}
+                style={{ "--service-glow": serviceConfig[idx]?.glow } as React.CSSProperties}
+              >
+                <div className="service-icon-wrap">
+                  {serviceConfig[idx]?.icon}
+                </div>
+                <h4>{service.title}</h4>
+                <p>{service.description}</p>
+              </motion.article>
+            );
+          })}
         </motion.div>
+
+        {additionalServices.length > 0 && (
+          <motion.div className="additional-service-group" variants={itemVariants}>
+            <div>
+              <span className="additional-service-label">Additional capability</span>
+              <h3>Trade &amp; Global Business</h3>
+              {additionalServices.map((service) => (
+                <p key={service.title}>{service.description}</p>
+              ))}
+            </div>
+            <span className="additional-service-mark" aria-hidden="true">
+              +
+            </span>
+          </motion.div>
+        )}
 
         <motion.a
           href="#contact"
           className="service-cta"
           variants={itemVariants}
         >
-          Ready to start? Get in touch →
+          Have a project in mind? Let’s talk →
         </motion.a>
       </div>
     </motion.section>

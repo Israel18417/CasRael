@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { type Profile } from "../js/data";
 
@@ -13,13 +13,18 @@ const ROLES = [
   "Product Manager",
 ];
 
-function useTypewriter(words: string[], speed = 80, pause = 2000) {
+function useTypewriter(words: string[], enabled: boolean, speed = 80, pause = 2000) {
   const [displayed, setDisplayed] = useState("");
   const [wordIdx, setWordIdx] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
+    if (!enabled) {
+      setDisplayed(words[0]);
+      return;
+    }
+
     const current = words[wordIdx];
     let timeout: ReturnType<typeof setTimeout>;
 
@@ -35,17 +40,19 @@ function useTypewriter(words: string[], speed = 80, pause = 2000) {
     }
 
     return () => clearTimeout(timeout);
-  }, [charIdx, deleting, wordIdx, words, speed, pause]);
+  }, [charIdx, deleting, wordIdx, words, speed, pause, enabled]);
 
   useEffect(() => {
+    if (!enabled) return;
     setDisplayed(words[wordIdx].slice(0, charIdx));
-  }, [charIdx, wordIdx, words]);
+  }, [charIdx, wordIdx, words, enabled]);
 
-  return displayed;
+  return enabled ? displayed : words[0];
 }
 
 export default function Hero({ profile }: HeroProps) {
-  const typedRole = useTypewriter(ROLES);
+  const prefersReducedMotion = useReducedMotion();
+  const typedRole = useTypewriter(ROLES, prefersReducedMotion !== true);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -83,7 +90,8 @@ export default function Hero({ profile }: HeroProps) {
           by {profile.owner}
         </motion.p>
         <motion.p className="hero-role" variants={itemVariants}>
-          <span>{typedRole}</span>
+          <span aria-hidden="true">{typedRole}</span>
+          <span className="sr-only">Full-stack developer, brand strategist, media producer, and product manager</span>
           <span className="typewriter-cursor" aria-hidden="true" />
         </motion.p>
         <motion.p className="hero-description" variants={itemVariants}>
@@ -100,12 +108,10 @@ export default function Hero({ profile }: HeroProps) {
             Contact Me
           </a>
           <a
-            href={profile.website}
+            href="#projects"
             className="btn-secondary"
-            target="_blank"
-            rel="noreferrer"
           >
-            Visit CasRael
+            View selected work
           </a>
         </motion.div>
 
