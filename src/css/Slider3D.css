@@ -637,6 +637,62 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
+.success-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 14px auto 0;
+  padding: 14px 18px;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.13), rgba(111, 208, 255, 0.07));
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.1);
+}
+
+.success-badge-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  place-items: center;
+  border: 1px solid rgba(52, 211, 153, 0.32);
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.14);
+  color: #34d399;
+  animation: success-icon-pop 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.success-badge-copy {
+  display: grid;
+  gap: 3px;
+}
+
+.success-badge-copy strong {
+  color: #6ee7b7;
+  font-size: 0.95rem;
+}
+
+.success-badge-copy > span {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.86rem;
+}
+
+@keyframes success-icon-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .contact-details {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

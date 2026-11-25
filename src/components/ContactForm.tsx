@@ -206,28 +206,22 @@ export default function ContactForm({ profile }: ContactFormProps) {
             <AnimatePresence>
               {isSuccess && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                  role="status"
+                  initial={{ opacity: 0, scale: 0.92, y: 8 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.8, y: 10 }}
+                  exit={{ opacity: 0, scale: 0.96, y: 4 }}
+                  transition={{ type: "spring", stiffness: 280, damping: 22 }}
                   className="success-badge"
-                  style={{
-                    position: "absolute",
-                    top: "120%",
-                    left: 0,
-                    right: 0,
-                    textAlign: "center",
-                    color: "var(--clr-primary)",
-                    fontWeight: 700,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "8px"
-                  }}
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span>I'll get back to you shortly!</span>
+                  <span className="success-badge-icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </span>
+                  <span className="success-badge-copy">
+                    <strong>Message sent successfully</strong>
+                    <span>Thanks for reaching out. I’ll get back to you shortly.</span>
+                  </span>
                 </motion.div>
               )}
             </AnimatePresence>
